@@ -1,0 +1,89 @@
+
+int isvalid(vector<vector<char>>&grid,int i,int j)
+{
+    
+    int m=grid.size();
+    int n=grid[0].size();
+    if(i<0 ||i>=m ||j<0||j>=n)return 0;
+    if(grid[i][j]=='0')return 0;
+    return 1;
+}
+
+
+
+
+
+int dx[4]={0,0,-1,1};
+int dy[4]={1,-1,0,0};
+
+
+
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        
+        int m=grid.size();
+        int n=grid[0].size();
+        int count=0;
+        
+        
+    queue<pair<int,int>>q;
+        int i,j;
+        for(i=0;i<m;i++)
+        {
+            
+            for(j=0;j<n;j++)
+            {
+   if(grid[i][j]=='1')//checking if grid is 1
+       
+   { count++;
+       
+       
+       //push in queue
+       q.push({i,j});
+      
+       grid[i][j]='0';
+       while(q.empty()==0)
+       {
+           
+           int tx=q.front().first;//storing our front pair in queue
+           int ty=q.front().second;
+           grid[i][j]='0';
+           //using grid for storing my element
+           
+          q.pop();
+           for(int k=0;k<4;k++)
+           {
+               int newx=tx+dx[k];
+               int newy=ty+dy[k];
+               
+               
+               if(isvalid(grid,newx,newy))
+               {
+                  grid[newx][newy]='0';
+                   q.push({newx,newy});
+                   
+               }
+               
+           }
+           
+       }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+   }
+                
+                
+                
+            }
+        }
+     return count;   
+        
+    }
+};
