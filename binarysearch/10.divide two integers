@@ -1,0 +1,70 @@
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        
+        long long x=dividend;
+        long long y=divisor;
+        
+        
+        
+        long long t=1;
+        if(x==0)return 0;
+        if(y==0 )
+        {
+            
+            if(y<0)return INT_MIN;
+            return INT_MAX;
+            
+        }
+          int sign=-1;
+        if(x>0&&y>0||x<0&&y<0)sign=1;
+        
+        
+        
+        if(x==INT_MIN && y==-1)return INT_MAX;
+        if(x==INT_MAX&&y==1)return INT_MAX;
+        if(x==INT_MIN&&y==1)
+        {
+        
+            return INT_MIN;
+            
+        }
+        
+        
+      
+        x=abs(x);
+        y=abs(y);
+        long long temp=0;
+        int ans=0;
+        int i;
+      
+        
+            for( i=31;i>=0;i--)
+            {
+                
+                if((temp+ (y<<i) )<=x )
+                {
+                    temp=temp+ (y<<i);
+                    ans=ans+ (t<<i);
+                    
+                    
+                }
+            }
+            
+        
+            if(sign==-1&&ans>=INT_MAX)
+            {
+                return INT_MAX;
+            }
+            
+  ans=ans*(sign);      
+  
+            if(ans>INT_MAX)return INT_MAX;
+        if(ans<INT_MIN)return INT_MIN;
+            return ans;
+            
+        
+        
+        
+    }
+};
