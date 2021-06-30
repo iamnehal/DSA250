@@ -1,0 +1,42 @@
+take care of n as if u take double of n then it will not be processed in mod sign of odd
+if u take it as int only then in case of INT_MIN when u take abs sign it will overflow as
+
+Value of INT_MAX is +2147483647.
+Value of INT_MIN is -2147483648.
+so take variable as long long
+
+double myPow(double x, int n) {
+        
+        long long b=n;
+int sign=1;        double res=1;
+        if(b<0)sign=0;
+b=abs(b);
+        while(b)
+        {
+            
+            if(b%2==1)
+            {
+                res*=x;
+                b--;
+            }
+            else
+            { x*=x;
+                
+                b=b/2;
+            }
+            
+        }
+        if(sign==0)
+            
+        {
+            double temp=1;
+            return temp/res;
+            
+        }
+            
+        
+        return res;
+        
+        
+    }
+};
