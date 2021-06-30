@@ -1,0 +1,74 @@
+vector<int> searchRange(vector<int>& a, int x) {
+        
+        vector<int>v;
+        
+        int position=-1;
+        int low=0;
+        int high=a.size()-1;
+        while(low<=high)
+        {
+            
+            int mid=(low+(high-low)/2);
+            int t=a[mid];
+            
+            if(t==x)
+            {
+                position=mid;
+                high=mid-1;
+            }
+            else if(t>x)
+            { 
+                high=mid-1;
+                
+            }
+            
+            else
+            {
+                low=mid+1;
+                
+            }
+            
+            
+            
+            
+            
+        }
+        
+        v.push_back(position);
+        position=-1;
+        
+        low=0;
+      high=a.size()-1;
+        while(low<=high)
+        {
+            
+            int mid=(low+(high-low)/2);
+            int t=a[mid];
+            
+            if(t==x)
+            {
+                position=mid;
+            low=mid+1;
+            }
+            else if(t>x)
+            { 
+                high=mid-1;
+                
+            }
+            
+            else
+            {
+                low=mid+1;
+                
+            }
+            
+            
+            
+            
+            
+        }
+                v.push_back(position);
+        return v;
+        
+    }
+};
