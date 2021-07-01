@@ -1,0 +1,98 @@
+lower value is max in array,max value is sum ..now find mid element and then transverse the entire array that log2n times for each case and find min days
+
+
+class Solution {
+public:
+    
+    int isvalid(vector<int>&weights,int mid,int d)
+    {
+        
+        int check=1;
+        int sum=0;
+        int i=0;
+        int days=1;
+        while(i<weights.size())
+            
+        {
+            if(sum+weights[i]<=mid)
+            {
+                sum+=weights[i];
+                i++;
+            }
+            else
+            {
+                days++;
+                sum=0;
+                
+                
+            }
+            
+        }
+        
+        if(days>d)return 0;
+        return 1;
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    int shipWithinDays(vector<int>& weights, int days) {
+        
+        long int sum=0;
+        int i;
+        int maxv=0;
+        int n=weights.size();
+        for(i=0;i<n;i++)
+        { maxv=max(maxv,weights[i]);
+            sum+=weights[i];
+        }
+        
+    int low=maxv;
+        int high=sum;
+        
+       int possible=0;
+        int mid;
+        while(low<=high)
+        {
+            mid=low+(high-low)/2;
+            
+            if(isvalid(weights,mid,days))
+            {
+                possible=mid;
+                high=mid-1;
+                
+                
+                
+            }
+            
+            else
+            {
+                low=mid+1;
+            }
+            
+        }
+            
+            
+            
+        return possible;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+};
+binary-search
