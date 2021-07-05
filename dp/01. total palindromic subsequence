@@ -1,0 +1,57 @@
+https://www.youtube.com/watch?v=4RACzI5-du8&ab_channel=NeetCode
+class Solution {
+public:
+    int countSubstrings(string s) {
+        
+        
+        //i couldn't understand dp one so doing this by this one 
+        
+        int length=s.length();
+        int i,j;
+        
+        int l,r;
+        int reso=0;
+        int rese=0;
+        
+        for(i=0;i<length;i++)
+        {
+            l=i;r=i;
+            while(l>=0 && r<length && s[r]==s[l] )
+            {
+                reso+=1;
+                 l--;r++;
+                
+            }
+            
+            
+            
+            
+            
+        }
+        
+   
+        
+        for(i=0;i<length;i++)
+        { 
+            l=i;r=i+1;
+            while(l>=0 && r<length && s[r]==s[l] )
+            {
+                rese+=1;
+                 
+                l--;r++;
+            }
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        return reso+rese;
+        
+        
+        
+    }
+};
