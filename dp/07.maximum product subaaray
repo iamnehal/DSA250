@@ -1,0 +1,66 @@
+
+
+
+class Solution {
+public:
+    
+    int maxa(int a,int b,int c)
+{
+return max(a,max(b,c));    
+    
+}
+    int mina(int a,int b,int c)
+    {
+        return min(a,min(b,c));
+    }
+    
+
+    
+    
+    int maxProduct(vector<int>& nums) {
+        int flag=0;
+        int po=0;
+        int maxp=nums[0];
+        int minp=nums[0];
+        
+        
+        
+        
+        
+        int ans=nums[0];
+        for(int i=1;i<nums.size();i++)
+        {
+            
+            if(nums[i]!=0)
+            {  if(flag==1)
+            {
+              
+                maxp=nums[i];
+                minp=nums[i];
+                
+            }
+             else
+             {
+                 int temp=maxp;
+                 maxp=maxa(maxp*nums[i],nums[i],minp*nums[i]);
+                 
+                 minp=mina(temp*nums[i],minp*nums[i],nums[i]);
+             }
+             flag=0;
+             ans=maxa(ans,maxp,minp);
+                
+                
+            }
+            else
+            {
+               flag=1;
+                po=1;
+            
+        }
+        
+    }
+        if(po)ans=max(ans,0);
+        return ans;
+    }
+        
+};
