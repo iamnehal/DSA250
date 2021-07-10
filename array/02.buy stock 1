@@ -18,3 +18,41 @@ public:
         
     }
 };
+
+**************************
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        
+        
+        //method 2 low high method
+        
+        int low=prices[0];
+        int i;
+   int ans=0;
+        int high=INT_MIN;
+        for(i=1;i<prices.size();i++)
+        {
+            
+            if(prices[i]<=low)
+            { low=prices[i];
+             
+                high=0;
+                
+            }
+            
+           else  if(prices[i]>=high)
+            {
+                high=prices[i];
+                 ans=max(ans,high-low);  
+            }
+            
+            
+         
+            
+            
+        }
+        
+        return ans;
+    }
+};
