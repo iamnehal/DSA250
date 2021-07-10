@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        //method 1  using kandane algo
+        
+        int maxsofar=0;
+        int maxtotal=0;
+        for(int i=1;i<prices.size();i++)
+        {
+            
+            maxsofar=max(0,maxsofar+ prices[i]-prices[i-1]  );
+            maxtotal=max(maxtotal,maxsofar);
+            
+        }
+        
+        
+        return maxtotal;
+        
+    }
+};
