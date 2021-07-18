@@ -64,3 +64,39 @@ return max(a,max(b,c));
     }
         
 };
+
+
+*********************************
+
+int Solution::maxProduct(const vector<int> &A) {
+
+if(A.size()==1)return A[0];
+int minval=0;
+int maxval=0;
+int ans=A[0];
+int i;
+for(i=0;i<A.size();i++)
+{
+
+int x=A[i];
+
+int temp=maxval;
+
+maxval=max(x,max(x*maxval,minval*x));
+
+
+minval=min(x,min(  x*minval,x*temp                ));
+
+ ans=max(ans,max(maxval,minval));
+
+
+
+}
+return ans;
+
+
+
+
+
+}
+
