@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        
+        unordered_map<int,int>m;
+        
+int prefsum=0;
+     int i;
+        int ans=0;
+        m[0]++;
+        
+        
+        int n=nums.size();
+        for(i=0;i<n;i++)
+        {
+            
+            prefsum+=nums[i];
+            
+            int find=prefsum-k;
+            
+            ans+=m[find];
+            m[prefsum]++;
+            
+            
+            
+            
+        }
+        
+        return ans;
+        
+        
+        
+        
+    }
+};
