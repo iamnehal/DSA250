@@ -1,0 +1,34 @@
+int Solution::canJump(vector<int> &A) {
+
+int n=A.size();
+if(n==1)return 1;
+int target=n-1;
+for(int i=n-2;i>=0;i--)
+{
+
+if(A[i]+i>=target)
+{
+    target=i;
+
+}
+
+
+}
+
+
+if(target==0)return 1;
+return 0;
+
+
+
+
+
+
+
+}
+
+
+
+*******************
+
+
