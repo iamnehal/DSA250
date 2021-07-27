@@ -1,0 +1,123 @@
+https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1#
+
+https://www.youtube.com/watch?v=2JSQIhPcHQg&list=PL_z_8CaSLPWeYfhtuKHj-9MpYb6XQJ_f2&index=21
+
+
+// { Driver Code Starts
+// Initial template for C++
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+//User function template in C++
+
+class Solution 
+{
+    public:
+    //Function to find minimum number of pages.
+    
+    int isvalid(int a[],int n,int k,int target)
+    {
+        int student =1;
+        int sum=0;
+        for(int i=0;i<n;i++)
+        {
+             sum=sum+a[i];
+             
+             if(sum>target)
+             {
+                 student++;
+                 sum=a[i];
+             }
+             if(student>k)return 0;
+            
+            
+        }
+        
+        if(student<=k)return 1;
+        return 0;
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    int findPages(int a[], int n, int m) 
+    {if(m>n) return -1;
+        //to find limits of end transverse the array and find min and maximum
+        
+        int i;
+        int mine=INT_MAX;
+        int maxe=INT_MIN;
+        int sum=0;
+        for(i=0;i<n;i++)
+        {
+            //mine=min(mine,a[i]);
+            maxe=max(maxe,a[i]);
+            
+            sum=sum+a[i];
+        }
+     
+     int low=maxe;
+     int high=sum;
+     int res=-1;
+     int mid;
+     while(low<=high)
+     { mid= low + (high-low)/2;
+      
+      
+      if(isvalid(a,n,m,mid))
+      {
+           res=mid;
+           high=mid-1;
+          
+          
+      }
+      else
+      {
+          low=mid+1;
+          
+          
+      }
+      
+      
+      
+      
+      
+      
+     
+         
+         
+     }
+        
+        return res;
+        
+        
+    }
+};
+
+// { Driver Code Starts.
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        int A[n];
+        for(int i=0;i<n;i++){
+            cin>>A[i];
+        }
+        int m;
+        cin>>m;
+        Solution ob;
+        cout << ob.findPages(A, n, m) << endl;
+    }
+    return 0;
+}
+  // } Driver Code Ends
